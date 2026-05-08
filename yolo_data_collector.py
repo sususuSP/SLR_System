@@ -7,7 +7,7 @@ from ultralytics import YOLO
 
 print("🔄 正在加载终极数据采集系统 (3D 全息感知版)...")
 
-TARGET_ACTION = 'very'  # 👈 在这里修改词汇拼音
+TARGET_ACTION = '9'  # 👈 在这里修改词汇拼音
 NO_SEQUENCES = 40  # 录制 40 次
 SEQUENCE_LENGTH = 40  # 每次 40 帧
 
