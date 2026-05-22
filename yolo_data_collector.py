@@ -7,11 +7,16 @@ from ultralytics import YOLO
 
 print("🔄 正在加载终极数据采集系统 (3D 全息感知版)...")
 
-TARGET_ACTION = '9'  # 👈 在这里修改词汇拼音
+TARGET_ACTION = '9'  # 👈 在这里修改你要录制的词汇拼音/代号
 NO_SEQUENCES = 40  # 录制 40 次
 SEQUENCE_LENGTH = 40  # 每次 40 帧
 
+# 🌟 将保存根目录修改回默认的 dataset 文件夹
 DATA_PATH = os.path.join('dataset')
+
+# 自动创建根目录（如果不存在的话），防止程序因为找不到文件夹而报错
+if not os.path.exists(DATA_PATH):
+    os.makedirs(DATA_PATH)
 
 action_path = os.path.join(DATA_PATH, TARGET_ACTION)
 if not os.path.exists(action_path):
@@ -50,6 +55,7 @@ def extract_normalized_keypoints(results):
 
 cap = cv2.VideoCapture(0)
 print(f"\n🚀 开始录制动作：【{TARGET_ACTION}】")
+print(f"📁 数据将安全保存在目录：{DATA_PATH}/{TARGET_ACTION}")
 
 with mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5) as hands:
     sequence = 0
